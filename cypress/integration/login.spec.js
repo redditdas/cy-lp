@@ -10,13 +10,6 @@ describe('Login Spec', () => {
 			.get('[ng-model="user.password"]').type(Cypress.env('password'))
       .get('#login-form').submit()
       
-      cy.getCookie('_CafeTownsend-Angular-Rails_session')
-         .then((cookie) => {
-         cy.log(JSON.stringify(cookie));
-         })
-        
-        cy.getCookie('_CafeTownsend-Angular-Rails_session').should('exist')
-
       //assertions
       .location('pathname').should('eq', '/employees')
 			.get('#greetings')

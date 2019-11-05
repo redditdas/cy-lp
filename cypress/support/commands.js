@@ -1,37 +1,41 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+/// <reference types="Cypress" />
 
 Cypress.Commands.add('login', () => {
   cy.visit(`${Cypress.env('baseUrl')}/login`)
 			.get('[ng-model="user.name"]').type(Cypress.env('username'))
 			.get('[ng-model="user.password"]').type(Cypress.env('password'))
       .get('#login-form').submit()
-
-      // .location('pathname').should('eq', '/employees')
-			// .get('#greetings')
-			// .should('be.visible')
-			// .should('have.text', `Hello ${Cypress.env('username')}`)
 })
+
+
+    // cy.request({
+		//   method: 'GET',
+    //   url: 'https://cafetownsend-angular-rails.herokuapp.com/login',
+    //   headers: {
+    //     Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3'
+    //   }
+    // }).then((resp) => {
+    //   var el = document.createElement('html');
+    //   el.innerHTML = (resp.body).replace(`<!doctype html>`,``)
+
+    //   const csrf_token = el.getElementsByTagName('meta')[1].getAttribute("content")
+    //   cy.log('head ===', csrf_token)
+    //   const cookie = resp.headers['set-cookie'][0].split('=')[1]
+    //   cy.request({
+    //     method: 'POST',
+    //     url: 'https://cafetownsend-angular-rails.herokuapp.com/sessions',
+    //     headers: {
+    //       Accept: 'application/json, text/plain, */*',
+    //       'X-CSRF-TOKEN': csrf_token,
+    //       'X-Requested-With': XMLHttpRequest,
+    //       'Content-Type': 'application/json;charset=utf-8',
+    //       Cookie: cookie,
+    //       Connection: 'keep-alive'
+    //     },
+    //     body: {
+    //       name:'Luke',password:'Skywalker'
+    //     }
+    //   })
+    // })
+    
+  
