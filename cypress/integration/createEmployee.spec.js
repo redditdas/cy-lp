@@ -2,7 +2,7 @@
 
 import { randomString, randomDate } from '../support/helper'
 
-describe('login', () => {
+describe('Create Employee Spec', () => {
   before('login', () => {
     cy.login()
   })
@@ -11,12 +11,11 @@ describe('login', () => {
      
     const firstName = randomString(4)
     const lastName = randomString(5)
-    const email = `${firstName}.${lastName}@lp.com`
+    const email = `${firstName}.${lastName}@cypress.io`
     
       cy
       //create Employee
       .get('#bAdd').click()
-      .wait(1000)
       .get('[ng-model="selectedEmployee.firstName"]').type(firstName)
       .get('[ng-model="selectedEmployee.lastName"]').type(lastName)
       .get('[ng-model="selectedEmployee.startDate"]').type(randomDate())

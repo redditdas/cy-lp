@@ -14,6 +14,6 @@ describe('Login Spec', () => {
       .location('pathname').should('eq', '/employees')
 			.get('#greetings')
 			.should('be.visible')
-			.should('have.text', `Hello ${Cypress.env('username')}`)
-	})
+      .should('have.text', `Hello ${Cypress.env('username')}`)
+  })
 })

@@ -8,4 +8,9 @@ export function randomDate() {
   return date.toISOString().split('T')[0]
 }
 
-
+export var emp = {
+  firstName: `${randomString(5)}`,
+  lastName: `${randomString(7)}`,
+  email : `${randomString(3)}.${randomString(4)}@lp.com`,
+  date : `${randomDate()}`
+} 
