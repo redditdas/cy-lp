@@ -21,10 +21,10 @@ Cypress.Commands.add('login', () => {
 	loggedIn()
 })
 
-Cypress.Commands.add('createEmployee', () => {
+Cypress.Commands.add('createEmployee', (filename) => {
 	cy
 		//write emp data to fixture 
-		.writeFile('cypress/fixtures/createdEmp.json', emp)
+		.writeFile(`cypress/fixtures/${filename}.json`, emp)
 	
 		.get('#bAdd').click()
     .get('[ng-model="selectedEmployee.firstName"]').type(emp.firstName)

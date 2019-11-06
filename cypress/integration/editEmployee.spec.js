@@ -1,13 +1,14 @@
 // <reference types="Cypress" />
 import { emp } from '../support/helper'
+
 describe('Edit Employee', () => {
   before('Login and Create Employee', () => {
     cy.login()
-    cy.createEmployee()
+    cy.createEmployee('madmax')
   })
 
   it('Edit Employee details and verify new details were Saved', () => {
-    cy.fixture('createdEmp').then((user) => {
+    cy.fixture('madmax').then((user) => {
       //select Employee
       cy.get('#employee-list')
         .contains(`${user.firstName} ${user.lastName}`)
@@ -27,7 +28,7 @@ describe('Edit Employee', () => {
       cy.get('[type="submit"][ng-hide="isCreateForm"]')
         .click()
       
-      //verify
+      //verify email was update
       cy.get('#employee-list')
         .contains(`${user.firstName} ${user.lastName}`)
         .click()
@@ -35,17 +36,6 @@ describe('Edit Employee', () => {
         .click()
         .get('[ng-model="selectedEmployee.email"]')
         .should('have.value', newEmail)
-        // .invoke('val')
-        // .then((text) => {
-        //   const sometext = text
-        //   expect(text).to.equal(newEmail)
-        // })
-        // .should('have.text', newEmail)
-        
-      
-      
     })
-
   })
-    
 })
