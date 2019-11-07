@@ -1,5 +1,4 @@
 /// <reference types="Cypress" />
-import { emp } from '../support/helper'
 
 describe('Delete Employee Spec', () => {
   before('Login and Create Employee', () => {
@@ -17,29 +16,10 @@ describe('Delete Employee Spec', () => {
       //click Delete Button
       cy.get('#bDelete')
         .click()
-        .wait(5000)
-        .get('#employee-list')
-        .contains(`${user.firstName} ${user.lastName}`)
-      
-      //assert Employee has been deleted
-    
-      // cy.get('#employee-list').should('not.have', `${user.firstName} ${user.lastName}`)
-      
-      //confirm
-      // window.confirm(true)
-      
-      //click update button
-      // cy.get('[type="submit"][ng-hide="isCreateForm"]')
-      //   .click()
-      
-      // //verify email was update
-      // cy.get('#employee-list')
-      //   .contains(`${user.firstName} ${user.lastName}`)
-      //   .click()
-      //   .get('#bEdit')
-      //   .click()
-      //   .get('[ng-model="selectedEmployee.email"]')
-      //   .should('have.value', newEmail)
+        // .wait(10000)
+        //confirm employee is not present
+        .get('#employee-list').click({ force: true })
+        .should('not.have', `${user.firstName} ${user.lastName}`)
     })
   })
 })

@@ -1,14 +1,14 @@
-// <reference types="Cypress" />
+/// <reference types="Cypress" />
 import { emp } from '../support/helper'
 
-describe('Edit Employee', () => {
+describe('Edit Employee Spec', () => {
   before('Login and Create Employee', () => {
     cy.login()
-    cy.createEmployee('madmax')
+    cy.createEmployee('createdEmp')
   })
 
   it('Edit Employee details and verify new details were Saved', () => {
-    cy.fixture('madmax').then((user) => {
+    cy.fixture('createdEmp').then((user) => {
       //select Employee
       cy.get('#employee-list')
         .contains(`${user.firstName} ${user.lastName}`)
